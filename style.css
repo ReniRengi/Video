@@ -1,0 +1,190 @@
+@font-face {
+  font-family: Roboto;
+  src: url("./assets/fonts/Roboto-Thin.ttf");
+}
+
+* {
+ box-sizing: border-box;
+ margin: 0;
+ padding: 0;
+}
+
+
+html{
+ scroll-behavior: smooth;
+}
+
+.wrap-body{
+  max-height: 6250px;
+}
+
+.section{
+ background-size:cover;
+
+}
+
+.wrap-video{
+ padding-top:90px;
+ padding-bottom: 75px;
+ margin: 0px auto;
+ max-width: 1370px;
+ background-color:var(--font-white);
+}
+
+
+.video-section {
+ font-family: "Roboto" sans-serif;
+ font-size:32px;
+}
+
+.video-section button {
+ background-color: transparent;
+ border: none;
+ background-repeat: no-repeat;
+}
+
+.video-section button{
+  transition: 1s;
+ }
+
+ .video-section button:hover{
+  transform: scale(1.2);
+ }
+
+.video-section .controls {
+ display: flex;
+ justify-content: space-around;
+ align-items:center;
+ background: var(--bg-dark);
+ height: 72px;
+ }
+
+ .video-section .controls button {
+   width: 30px;
+   height: 30px;
+   background-size: 70%;
+   background-position: 50%;
+ }
+
+ .video-section .controls button.action_play {
+  background-image: url(./assets/img/button_2.png);  
+  margin-left:10px;
+ }
+
+ .video-section .controls button.action_pause {
+  background-image: url(./assets/img/button_3.png);  
+  margin-left:10px;
+ }
+ 
+.controls button.mute_false{
+   background-image: url(./assets/img/button_5.png);   
+ }
+
+.controls button.mute_true{
+  background-image: url(./assets/img/button_7.png);   
+}
+
+ .video-section .controls button.fullscreen_false {
+  background-image: url(./assets/img/button_6.png);
+   margin-right: 25px;
+   margin-left: 10px;
+   
+ }
+ .video-section .controls button.fullscreen_true{
+  background-image: url(./assets/img/button_6.png);
+  margin-right: 25px;
+  margin-left: 10px;  
+}
+
+
+ .video-section .controls * {
+   vertical-align: middle;
+ }
+
+ .video{
+   display: block;
+   position: relative;
+   background-color: black;
+}
+
+.video video{
+  width:100%;
+}
+
+.video button.big_button_on {
+   display: block;
+   position: absolute;
+   width:16%;
+   height:37%;
+   bottom:32%;
+   left:42%; 
+   pointer-events: none;
+   background-size: 100%;
+   background-image: url(./assets/img/button_1.png);
+   transition: 1s;
+}
+
+.video button.big_button_off {
+  position: absolute;
+  height:37%;
+  pointer-events: none;
+  transition: 1s;
+}
+
+video button:hover{
+  transform: scale(1.2);
+}
+
+.curr-time, .duration{
+ color: grey;
+ font-size: 25px;
+ margin: 0 10px 0 10px;
+}
+
+
+.progress-bar {
+   background: linear-gradient(to right, #679dad 0%, #679dad 0%, grey 100%, grey 100%);
+   border: solid 2px black;
+   border-radius: 0;
+   height: 10px;
+   width: 50%;
+   outline: none;
+   transition: background 450ms ease-in;
+   -webkit-appearance: none;
+ }
+
+ .progress-bar::-webkit-slider-thumb {
+   width: 15px;
+   height: 15px;
+   border-radius: 50%;
+   -webkit-appearance: none;
+   cursor: ew-resize;
+   background: var(--font-white);
+ }
+ .volume {
+   background: linear-gradient(to right, #679dad 0%, #679dad 0%, grey 100%, grey 100%);
+   margin: 0 10px 0 10px;
+   border: solid 2px black;
+   border-radius: 0;
+   height: 10px;
+   width: 15%;
+   outline: none;
+   transition: background 450ms ease-in;
+   -webkit-appearance: none;
+ }
+
+ .volume::-webkit-slider-thumb {
+   width: 15px;
+   height: 15px;
+   border-radius: 50%;
+   -webkit-appearance: none;
+   cursor: ew-resize;
+   background: var(--font-white);
+ }
+
+ #speed{
+  background:linear-gradient(to right, #679dad 0%, #679dad 0%, grey 100%, grey 100%);
+  margin-right: 10px;
+  margin-left: 10px;
+ }
+
