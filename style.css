@@ -1,7 +1,5 @@
-@font-face {
-  font-family: Roboto;
-  src: url("./assets/fonts/Roboto-Thin.ttf");
-}
+
+
 
 * {
  box-sizing: border-box;
@@ -10,38 +8,14 @@
 }
 
 
-html{
- scroll-behavior: smooth;
-}
-
-.wrap-body{
-  max-height: 6250px;
-}
-
-.section{
- background-size:cover;
-
-}
-
 .wrap-video{
  padding-top:90px;
  padding-bottom: 75px;
  margin: 0px auto;
  max-width: 1370px;
- background-color:var(--font-white);
+ background-color: white;
 }
 
-
-.video-section {
- font-family: "Roboto" sans-serif;
- font-size:32px;
-}
-
-.video-section button {
- background-color: transparent;
- border: none;
- background-repeat: no-repeat;
-}
 
 .video-section button{
   transition: 1s;
@@ -51,14 +25,22 @@ html{
   transform: scale(1.2);
  }
 
+ .video-section button {
+  background-color: transparent;
+  border: none;
+  background-repeat: no-repeat;
+ }
+
 .video-section .controls {
  display: flex;
  justify-content: space-around;
  align-items:center;
- background: var(--bg-dark);
+ background: black;
  height: 72px;
+ z-index:2147483647;
  }
 
+ 
  .video-section .controls button {
    width: 30px;
    height: 30px;
@@ -70,32 +52,37 @@ html{
   background-image: url(./assets/img/button_2.png);  
   margin-left:10px;
  }
+ 
+ 
 
  .video-section .controls button.action_pause {
   background-image: url(./assets/img/button_3.png);  
   margin-left:10px;
  }
- 
+
+  
 .controls button.mute_false{
    background-image: url(./assets/img/button_5.png);   
  }
 
+ 
 .controls button.mute_true{
   background-image: url(./assets/img/button_7.png);   
 }
 
- .video-section .controls button.fullscreen_false {
+ .video-section .controls button.fullscreen_false{
   background-image: url(./assets/img/button_6.png);
    margin-right: 25px;
    margin-left: 10px;
    
  }
+
+ 
  .video-section .controls button.fullscreen_true{
   background-image: url(./assets/img/button_6.png);
   margin-right: 25px;
-  margin-left: 10px;  
+  margin-left: 10px; 
 }
-
 
  .video-section .controls * {
    vertical-align: middle;
@@ -131,9 +118,11 @@ html{
   transition: 1s;
 }
 
+
 video button:hover{
   transform: scale(1.2);
 }
+
 
 .curr-time, .duration{
  color: grey;
@@ -159,8 +148,10 @@ video button:hover{
    border-radius: 50%;
    -webkit-appearance: none;
    cursor: ew-resize;
-   background: var(--font-white);
+   background: white;
  }
+
+  
  .volume {
    background: linear-gradient(to right, #679dad 0%, #679dad 0%, grey 100%, grey 100%);
    margin: 0 10px 0 10px;
@@ -179,9 +170,14 @@ video button:hover{
    border-radius: 50%;
    -webkit-appearance: none;
    cursor: ew-resize;
-   background: var(--font-white);
+   background: white;
  }
 
+ video::-webkit-media-controls { 
+   
+  display:none !important; }
+
+ 
  #speed{
   background:linear-gradient(to right, #679dad 0%, #679dad 0%, grey 100%, grey 100%);
   margin-right: 10px;

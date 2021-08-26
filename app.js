@@ -13,6 +13,14 @@ function main() {
     const speedSelect = document.querySelector(".speed");
     const fullscreenButton = document.getElementById("fullscreen");
 
+    actionButton.addEventListener('click', videoAct);
+    videoPlayer.addEventListener('click', videoAct);
+    videoPlayer.addEventListener('timeupdate', videoProgress);    
+    progressBar.addEventListener('click', videoChangeTime);
+    muteButton.addEventListener('click', videoMute);
+    volumeScale.addEventListener('change', videoChangeVolume);
+    speedSelect.addEventListener('change', videoChangeSpeed);
+
     function videoAct() {
         if (videoPlayer.paused) {
             videoPlayer.play();
@@ -27,11 +35,8 @@ function main() {
         if (durationTime.innerHTML == "00:00") {
             durationTime.innerHTML = videoTime(videoPlayer.duration);
         }
-
     }
-    actionButton.addEventListener('click', videoAct);
-    videoPlayer.addEventListener('click', videoAct);
-    
+
     function videoTime(time) {
         time = Math.floor(time);
         let minutes = Math.floor(time / 60);
@@ -62,14 +67,9 @@ function main() {
         
     }
 
-    videoPlayer.addEventListener('timeupdate', videoProgress);
-    
-    progressBar.addEventListener('click', videoChangeTime);
-
     function videoChangeVolume() {
-        let volume = volumeScale.value / 100;
-
-        videoPlayer.volume = volume;
+        
+        videoPlayer.volume = volumeScale.value / 100;
 
         if (videoPlayer.volume == 0) {
 
@@ -98,35 +98,87 @@ function main() {
         let speed = speedSelect.value / 100;
         videoPlayer.playbackRate = speed;
     }
-
-    muteButton.addEventListener('click', videoMute);
-
-    volumeScale.addEventListener('change', videoChangeVolume);
-
-    speedSelect.addEventListener('change', videoChangeSpeed);
-    
-    
-
-    function videoChangeSize(){
-        if (fullscreenButton==="on"){
-            wrap.style.paddingTop = "0";
-            wrap.style.paddingBottom = "0";
-            wrap.style.margin= "0";
-            wrap.style.maxWidth = "auto";
-            fullscreenButton.setAttribute('class', "fullscreen_true");
-        }
-        else{
-            wrap.style.paddingTop = "90px";
-            wrap.style.paddingBottom = "75px";
-            wrap.style.margin= "0 auto";
-            wrap.style.maxWidth = "1370px";
-            fullscreenButton.setAttribute('class', "fullscreen_false");
-        
-        }
+    function videoBoostSpeed(){
+        let speed = (speedSelect.value / 100) +0.25;
+        videoPlayer.playbackRate = speed;
     }
 
-    fullscreenButton.addEventListener('click', videoChangeSize);
-    videoPlayer.addEventListener('click', videoChangeSize);
+   
+    volumeScale.value = 50;
+    videoChangeVolume();
+    
+        
+   function isFullScreen() {
+   return !!(document.fullscreen || document.webkitIsFullScreen || document.mozFullScreen || document.msFullscreenElement || document.fullscreenElement);
+}
+
+   function handleFullscreen() {
+    if (isFullScreen()) {
+       if (document.exitFullscreen) document.exitFullscreen();
+       else if (document.mozCancelFullScreen) document.mozCancelFullScreen();
+       else if (document.webkitCancelFullScreen) document.webkitCancelFullScreen();
+       else if (document.msExitFullscreen) document.msExitFullscreen();
+       
+       setFullscreen(false);
+    }
+    else {
+       if (videoPlayer.requestFullscreen) videoPlayer.requestFullscreen();
+       else if (videoPlayer.mozRequestFullScreen) videoPlayer.mozRequestFullScreen();
+       else if (videoPlayer.webkitRequestFullScreen) videoPlayer.webkitRequestFullScreen();
+       else if (videoPlayer.msRequestFullscreen) videoPlayer.msRequestFullscreen();
+       
+       setFullscreen(true);
+    }
+ }
+
+ function setFullscreen(){
+     videoPlayer.setAttribute('data-fullscreen', !!state)
+ }
+
+        
+    fullscreenButton.addEventListener('click', function(e) {
+        handleFullscreen();
+     });
+
+    ///videoPlayer.addEventListener('click', videoChangeSize);
+
+    function keyboard(event){ 
+        console.log("-"+event.key+"-");
+        
+        if(event.key===' '){
+            videoAct();
+            return;
+        }
+        else if(event.key==='k'){
+            videoAct();
+            return;
+        }
+       else if (event.key==="m") {
+            videoMute();
+            return;
+        }
+        else if (event.key==="f") {
+            handleFullscreen();
+            return;
+        }
+        else if(event.key=="shift+."){
+            videoBoostSpeed();
+            return;
+        }
+        else if(event.key=="shift+,"){
+            videoChangeSpeed();
+            return;
+        }
+        else if(event.key==">"){
+            videoChangeSpeed();
+        }
+            
+            
+    }
+        
+
+   document.addEventListener('keydown', keyboard);
+  
 
 }
 
