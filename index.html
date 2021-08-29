@@ -12,16 +12,14 @@
             <div class="video">
                <video id="video-player" src="./assets/video/Petits contes de Printemps - La ruse du Renard 🦊.mp4" preload="metadata"></video>
                <button class="big_button_on" id="big_button" type="button"></button>
-            </div>
-            <div class="controls">
-               
-               <button class="action_play" id="action" type="button"></button>
+                <div id="controls" class="controls">
+                <button class="action_play" id="action" type="button"></button>
                <div class="curr-time" id="curr-time">00:00</div>
                <input type="range" value="0" min="0" max="100" step="1" class="progress-bar" id="progress-bar">
                <div class="duration" id="duration">00:00</div>
                <button  id="mute" class="mute_false" type="button"></button>
                <input  type="range" value="0" min="0" max="100" step="1" class="volume" id="volume">
-               <select title="speed" class="speed" id="speed>"
+               <select title="speed" class="speed" id="speed">
                   <option value="25">x0.25</option>
                   <option value="50">x0.50</option>
                   <option value="75">x0.75</option>
@@ -32,6 +30,7 @@
                   <option value="200">x2.00</option>
                </select>
                <button id="fullscreen" class="fullscreen_false" type="button"></button>
+            </div>
             </div>
          </section>
       </main>
